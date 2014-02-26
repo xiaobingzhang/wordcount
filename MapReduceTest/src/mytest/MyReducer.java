@@ -24,6 +24,7 @@ public class MyReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
 			maxValue = Math.max(maxValue, value.get());
 		}
 		
+		
 		multipleOutputs.write(key, new IntWritable(maxValue),String.valueOf(maxValue));
 		//context.write(key, new IntWritable(maxValue));
 	}
