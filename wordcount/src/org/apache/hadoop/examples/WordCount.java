@@ -1,11 +1,9 @@
 package org.apache.hadoop.examples;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.StringTokenizer;
 
 import org.apache.hadoop.conf.Configured;
-import org.apache.hadoop.fs.FileSystem.Statistics;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
