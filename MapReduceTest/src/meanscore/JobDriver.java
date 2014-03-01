@@ -1,7 +1,8 @@
-package newwritable;
+package meanscore;
 
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
@@ -21,7 +22,7 @@ public class JobDriver extends Configured implements Tool {
 			ToolRunner.printGenericCommandUsage(System.err);
 			return -1;
 		}
-		Job job = new Job(getConf(), "JobDriver");
+		Job job = new Job(getConf(), "MeanScoreJobDriver");
 		job.setJarByClass(getClass());
 
 		// 删除输出文件夹
@@ -31,26 +32,11 @@ public class JobDriver extends Configured implements Tool {
 		FileInputFormat.addInputPath(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
-		job.setMapperClass(SortMapper.class);
-		job.setReducerClass(SortReducer.class);
-
-		// 设置输入格式
-		job.setInputFormatClass(KeyValueTextInputFormat.class);
-
-		// 设置map的输出类型
-		job.setMapOutputKeyClass(StringPair.class);
-		job.setMapOutputValueClass(IntWritable.class);
-
-		// 设置排序
-		job.setSortComparatorClass(TextIntComparator.class);
-
-		// 设置group
-		job.setGroupingComparatorClass(TextComparator.class);
-
-		job.setPartitionerClass(PartitionByText.class);
+		job.setMapperClass(MeanScoreMapper.class);
+		job.setReducerClass(MeanScoreReducer.class);
 
 		job.setOutputKeyClass(Text.class);
-		job.setOutputValueClass(Text.class);
+		job.setOutputValueClass(FloatWritable.class);
 
 		return job.waitForCompletion(true) ? 0 : 1;
 	}
