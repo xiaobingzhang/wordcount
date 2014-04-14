@@ -28,18 +28,16 @@ public class HBaseTest {
 	static {
 
 		conf = HBaseConfiguration.create();// hbase的配置信息
-		conf.set("hbase.zookeeper.quorum", "hd1");
-		conf.set("hbase.zookeeper.property.clientPort", "21818");
+		conf.addResource("hbase-site.xml");
 	}
 
 	public static void main(String[] args) throws Exception {
 
 		HBaseTest t = new HBaseTest();
 		t.createTable("temp", new String[] { "name", "age" });
-		t.insertRow("temp", "2", "age", "myage", "100");
+		t.insertRow("temp", "4", "age", "age", "40");
 		t.getOneDataByRowKey("temp", "2");
 		t.showAll("temp");
-
 	}
 
 	/***
@@ -140,7 +138,6 @@ public class HBaseTest {
 		Get g = new Get(Bytes.toBytes(rowkey));
 		Result r = h.get(g);
 		for (KeyValue k : r.raw()) {
-
 			System.out.println("行号:  " + Bytes.toStringBinary(k.getRow()));
 			System.out.println("时间戳:  " + k.getTimestamp());
 			System.out.println("列簇:  " + Bytes.toStringBinary(k.getFamily()));
