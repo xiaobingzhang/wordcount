@@ -21,6 +21,8 @@ public class SequenceFileWriteDemo {
 		Configuration conf = new Configuration();
 		FileSystem fs = FileSystem.get(URI.create(uri), conf);
 		Path path  = new Path(uri);
+
+		
 		IntWritable key = new IntWritable();
 		Text value = new Text();
 		SequenceFile.Writer writer = null;
@@ -32,7 +34,6 @@ public class SequenceFileWriteDemo {
 				key.set(100-i);
 				value.set(DATA[i%DATA.length]);
 				System.out.printf("[%s]\t%s\t%s\n",writer.getLength(),key,value);
-				
 				writer.append(key, value);
 			}
 		} finally{
