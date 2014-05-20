@@ -11,6 +11,7 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.KeyValueTextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.partition.HashPartitioner;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
@@ -70,7 +71,7 @@ public class MaxTemDriver extends Configured implements Tool {
 		
 		job1.setOutputValueClass(IntWritable.class);
 		job1.setOutputKeyClass(Text.class);
-		
+		job1.setPartitionerClass(HashPartitioner.class);
 		job1.setMapperClass(MaxValueMapper.class);
 		job1.setReducerClass(MaxValueReducer.class);
 

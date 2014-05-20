@@ -6,11 +6,15 @@
 /ch7
 /core-site.xml
 /hbase
+/hbase-site.xml
+/hdfs-site.xml
 /hivetest
+/mapred-site.xml
 /maxnum
 /meanscore
+/mysort
 /mytest
 /mytestkv
+/newwritable
 /singlekv
 /stjoin
-/newwritable

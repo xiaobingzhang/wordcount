@@ -11,7 +11,13 @@ import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
 public class MaxNumDriver extends Configured implements Tool {
-
+	/*
+	static {
+		Configuration.addDefaultResource("core-site.xml");
+		Configuration.addDefaultResource("hdfs-site.xml");
+		Configuration.addDefaultResource("mapred-site.xml");
+	}
+	*/
 	@Override
 	public int run(String[] args) throws Exception {
 		if (args.length != 2) {
@@ -22,7 +28,7 @@ public class MaxNumDriver extends Configured implements Tool {
 		}
 		
 		Job job = new Job(getConf(),"Max Number");
-		job.setJarByClass(getClass());
+		job.setJarByClass(MaxNumDriver.class);
 		
 		FileInputFormat.addInputPath(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
