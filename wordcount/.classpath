@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="src/java"/>
+	<classpathentry kind="src" path="src/resource"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="F:/apache/hadoop-1.2.1/lib/xmlenc-0.52.jar"/>
 	<classpathentry kind="lib" path="F:/apache/hadoop-1.2.1/lib/slf4j-log4j12-1.4.3.jar"/>
