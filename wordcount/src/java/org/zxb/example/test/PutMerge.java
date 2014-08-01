@@ -12,7 +12,7 @@ import org.apache.hadoop.io.IntWritable;
 
 public class PutMerge {
 	public static void main(String[] args) {
-
+		//i JUST WANT TO USE GITHUB
 		String argsArray[] = {"C:\\Users\\zxb\\Desktop\\11","tmp1"};
 		Configuration conf = new Configuration();
 		FileSystem hdfs;
